@@ -17,9 +17,15 @@ public class TestCompteBancaire {
 		virement = 220;
 	}
 	
-	@Test
+	@Test 
 	public void testCompteBancaire() {
 		CompteBancaire compte = new CompteBancaire(solde);
+		assertTrue(compte.ConsultationSolde() > 0);
+	}
+	
+	@Test (expected = IllegalArgumentException.class)
+	public void testCompteBancaireNegatif() {
+		CompteBancaire compte = new CompteBancaire(-1);
 		assertTrue(compte.ConsultationSolde() > 0);
 	}
 	

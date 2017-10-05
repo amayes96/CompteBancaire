@@ -6,6 +6,8 @@ public class CompteBancaire {
 	public CompteBancaire(int solde) {
 		if(solde >= 0)
 			this.solde = solde;
+		else
+			throw new IllegalArgumentException("solde inférieur à 0!");
 	}
 	
 	public int ConsultationSolde() {
@@ -15,18 +17,23 @@ public class CompteBancaire {
 	public void AjoutCredit(int somme) {
 		if(somme >= 0)
 			this.solde += somme;
+		else
+			throw new IllegalArgumentException("solde inférieur à 0!");
 	}
 	
 	public void Debit(int somme) {
 		if(somme >= 0 && somme <= this.solde)
 			this.solde -= somme;
+		else
+			throw new IllegalArgumentException("somme ionferieur à 0 ou supereir au solde");
 	}
 	
 	public void Virement(CompteBancaire c, int somme) {
 		if(somme >= 0 && this.solde >= somme) {
 			c.solde += somme;
 			this.solde -= somme;
-		}
+		}else
+			throw new IllegalArgumentException("solde inférieur à 0 ou supereir au solde");
 	}
 	
 	public static void main(String[] args) {
